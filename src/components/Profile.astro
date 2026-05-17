@@ -1,7 +1,9 @@
 ---
+import { Image } from "astro:assets";
 import { getLangFromUrl } from "../i18n/utils";
 import { Icon } from "astro-icon/components";
 import { AUTHOR, SOCIALS } from "../config";
+import avatarImage from "../assets/profile.jpeg";
 
 const lang = getLangFromUrl(Astro.url);
 const role = AUTHOR.role[lang as keyof typeof AUTHOR.role] ?? AUTHOR.role.en;
@@ -10,7 +12,7 @@ const bio = AUTHOR.bio[lang as keyof typeof AUTHOR.bio] ?? AUTHOR.bio.en;
 
 <div class="profile-card">
     <div class="avatar">
-        <img src={AUTHOR.avatar} alt={`${AUTHOR.name} profile picture`} />
+        <Image src={avatarImage} alt={`${AUTHOR.name} profile picture`} width={300} height={300} loading="eager" />
     </div>
 
     <div class="info">
