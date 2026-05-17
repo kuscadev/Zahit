@@ -3,6 +3,7 @@ import { getLangFromUrl, useTranslations, getRouteFromUrl } from '../i18n/utils'
 import { languages } from '../i18n/ui';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import { SITE_CONFIG } from '../config';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -24,7 +25,7 @@ if (isPost && route) {
 <header class="site-header">
 	<nav>
 		<div class="logo">
-			<a href={`/${lang}/`}>Zahit</a>
+			<a href={`/${lang}/`}>{SITE_CONFIG.title}</a>
 		</div>
 		<div class="links">
 			<a href={`/${lang}/`}>{t('nav.home')}</a>
