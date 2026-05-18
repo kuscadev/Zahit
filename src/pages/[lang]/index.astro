@@ -70,7 +70,7 @@ const archiveLabel = lang === 'tr' ? 'Tüm yazılar →' : 'All posts →';
 	.home-layout {
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: 3rem;
+		gap: 2rem;
 		align-items: start;
 	}
 
@@ -100,15 +100,21 @@ const archiveLabel = lang === 'tr' ? 'Tüm yazılar →' : 'All posts →';
 	/* Height-capped container */
 	.posts-container {
 		position: relative;
-		max-height: 520px;
+		max-height: 380px;
 		overflow: hidden;
 		display: flex;
 		flex-direction: column;
 	}
 
+	@media (min-width: 640px) {
+		.posts-container {
+			max-height: 520px;
+		}
+	}
+
 	ul {
 		list-style-type: none;
-		padding: 0 6px 0 0;
+		padding: 0;
 		flex: 1;
 		min-height: 0;
 	}
@@ -121,7 +127,7 @@ const archiveLabel = lang === 'tr' ? 'Tüm yazılar →' : 'All posts →';
 		display: flex;
 		flex-direction: column;
 		text-decoration: none;
-		padding: 1rem 1.2rem;
+		padding: 0.75rem 0.9rem;
 		border-radius: 8px;
 		border: 1px solid transparent;
 		transition: all var(--transition-speed) ease;
@@ -138,7 +144,7 @@ const archiveLabel = lang === 'tr' ? 'Tüm yazılar →' : 'All posts →';
 	}
 
 	.title {
-		font-size: 1.15rem;
+		font-size: clamp(1rem, 2.5vw, 1.15rem);
 		font-weight: 600;
 		color: var(--light);
 		transition: color var(--transition-speed) ease;

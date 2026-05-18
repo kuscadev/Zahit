@@ -49,7 +49,7 @@ const tocHeadings = headings.filter((h: MarkdownHeading) => h.depth === 2 || h.d
 					tags && tags.length > 0 && (
 						<div class="tags">
 							{tags.map((tag: string) => (
-								<span class="tag">#{tag}</span>
+								<a href={`/${lang}/tags/${tag}/`} class="tag">#{tag}</a>
 							))}
 						</div>
 					)
@@ -81,14 +81,18 @@ const tocHeadings = headings.filter((h: MarkdownHeading) => h.depth === 2 || h.d
 	/* Layout */
 	.post-layout {
 		display: grid;
-		grid-template-columns: 1fr;
+		grid-template-columns: minmax(0, 1fr);
 		gap: 3rem;
 		align-items: start;
 	}
 
+	.blog-post {
+		min-width: 0;
+	}
+
 	@media (min-width: 860px) {
 		.post-layout {
-			grid-template-columns: 3fr 1fr;
+			grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
 			gap: 4rem;
 		}
 		.toc-sidebar {
@@ -105,7 +109,7 @@ const tocHeadings = headings.filter((h: MarkdownHeading) => h.depth === 2 || h.d
 	}
 
 	.blog-post h1 {
-		font-size: 2.5rem;
+		font-size: clamp(1.6rem, 4.5vw, 2.5rem);
 		margin-bottom: 1rem;
 		margin-top: 0;
 	}
@@ -114,23 +118,35 @@ const tocHeadings = headings.filter((h: MarkdownHeading) => h.depth === 2 || h.d
 		font-size: 0.9rem;
 		color: rgba(218, 234, 255, 0.6);
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: center;
-		gap: 1.5rem;
+		gap: 0.5rem 1.5rem;
 		margin-bottom: 1rem;
 	}
 
 	.tags {
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: center;
 		gap: 0.5rem;
 	}
 
 	.tag {
 		font-size: 0.85rem;
-		color: var(--accent);
-		background-color: rgba(8, 85, 177, 0.1);
-		padding: 0.2rem 0.6rem;
+		color: var(--light);
+		background-color: rgba(79, 165, 216, 0.08);
+		border: 1px solid rgba(79, 165, 216, 0.2);
+		padding: 0.2rem 0.65rem;
 		border-radius: 1rem;
+		transition: all var(--transition-speed) ease;
+		text-decoration: none;
+	}
+
+	.tag:hover {
+		background-color: var(--accent);
+		border-color: var(--accent);
+		color: #ffffff;
+		transform: translateY(-1px);
 	}
 
 	/* Content */

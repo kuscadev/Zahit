@@ -55,7 +55,7 @@
   --font-family-heading: 'Source Sans 3', sans-serif;
 
   /* Layout Spacing */
-  --site-width: 80%;
+  --site-width: min(80%, calc(100% - 2rem));
   --content-padding: 2rem;
   
   /* Utilities */
@@ -72,6 +72,12 @@ body, h1, h2, h3, h4, p, figure, blockquote, dl, dd, ul, ol {
   padding: 0;
 }
 
+img, picture, video, canvas, svg, iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -85,6 +91,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: clip;
+}
+
+/* Ensure text wrapping on small screens */
+p, li, h1, h2, h3, h4, h5, h6, span, a {
+  overflow-wrap: break-word;
 }
 
 main {
@@ -105,13 +116,13 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
   margin-top: 1.5rem;
   letter-spacing: -0.02em;
 }
 
 h2 {
-  font-size: 1.75rem;
+  font-size: clamp(1.35rem, 3.5vw, 1.75rem);
 }
 
 p {
@@ -156,6 +167,7 @@ pre {
   border-radius: 8px;
   border: 1px solid rgba(218, 234, 255, 0.1);
   overflow-x: auto;
+  max-width: 100%;
   margin: 2rem 0;
   font-size: 0.95rem;
   line-height: 1.6;
@@ -242,10 +254,18 @@ pre::-webkit-scrollbar-thumb:hover {
 }
 
 /* Tables */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 2rem 0;
+  border-radius: 8px;
+  border: 1px solid rgba(218, 234, 255, 0.08);
+}
+
 table {
   width: 100%;
+  min-width: 500px;
   border-collapse: collapse;
-  margin: 2rem 0;
   font-size: 0.95rem;
 }
 
@@ -253,6 +273,7 @@ th, td {
   padding: 0.75rem 1rem;
   border: 1px solid rgba(218, 234, 255, 0.1);
   text-align: left;
+  white-space: nowrap;
 }
 
 th {
@@ -270,4 +291,15 @@ tr:nth-child(even) {
 
 tr:hover {
   background-color: rgba(218, 234, 255, 0.04);
+}
+
+/* Mobile content padding tighten */
+@media (max-width: 480px) {
+  :root {
+    --content-padding: 1.25rem;
+  }
+
+  body {
+    font-size: 1rem;
+  }
 }

@@ -115,7 +115,7 @@ const years = Object.keys(postsByYear).map(Number).sort((a, b) => b - a);
 	}
 
 	.title {
-		font-size: 1.1rem;
+		font-size: clamp(1rem, 2.5vw, 1.1rem);
 		font-weight: 600;
 		color: var(--light);
 		transition: color var(--transition-speed) ease;

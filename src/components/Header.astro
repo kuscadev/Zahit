@@ -30,6 +30,7 @@ if (isPost && route) {
 		<div class="links">
 			<a href={`/${lang}/`}>{t('nav.home')}</a>
 			<a href={`/${lang}/archive/`}>{t('nav.archive')}</a>
+			<a href={`/${lang}/tags/`}>{t('nav.tags')}</a>
 			<a href={`/${lang}/about/`}>{t('nav.about')}</a>
 		</div>
 		<div class="lang-switcher">
@@ -67,7 +68,9 @@ if (isPost && route) {
 <style>
 	.site-header {
 		width: var(--site-width);
-		padding: 2rem 0;
+		padding: 1.5rem 0;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	nav {
@@ -75,7 +78,7 @@ if (isPost && route) {
 		flex-wrap: wrap;
 		justify-content: space-between;
 		align-items: center;
-		gap: 1rem;
+		gap: 0.75rem;
 	}
 
 	.logo a {
@@ -92,16 +95,25 @@ if (isPost && route) {
 	.links {
 		display: flex;
 		gap: 1.5rem;
+		/* On mobile this wraps below logo/lang row */
+		order: 3;
+		width: 100%;
+		justify-content: center;
 	}
 
 	.links a {
-		font-size: 1rem;
+		font-size: 0.95rem;
 		font-weight: 500;
 		color: var(--light);
 	}
 
 	.links a:hover {
 		color: #ffffff;
+	}
+
+	.lang-switcher {
+		/* Stays right side with logo on mobile */
+		margin-left: auto;
 	}
 
 	.lang-switcher ul {
@@ -128,5 +140,22 @@ if (isPost && route) {
 	.lang-switcher a.active {
 		color: var(--bg-color);
 		background: var(--light);
+	}
+
+	/* Desktop: restore three-column flex, no wrapping */
+	@media (min-width: 640px) {
+		nav {
+			flex-wrap: nowrap;
+		}
+
+		.links {
+			order: unset;
+			width: auto;
+			justify-content: flex-start;
+		}
+
+		.lang-switcher {
+			margin-left: 0;
+		}
 	}
 </style>
