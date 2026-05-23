@@ -33,7 +33,7 @@ A list of social accounts rendered as rounded floating icons in the desktop side
 export const SOCIALS = [
   {
     label: 'GitHub',
-    href: 'https://github.com/kuscadev',
+    href: 'https://github.com/johndoe',
     icon: 'mdi:github',
   },
   // Add more links using the same schema structure

@@ -7,64 +7,64 @@
 
 export const SITE_CONFIG = {
   /** Sitenin başlığı / Site title */
-  title: 'Zahit',
+  title: 'Zahit Theme',
 
   /** Sitenin açıklaması / Site description */
   description: 'A raw, flat minimalist theme built on the philosophy that simplicity is depth.',
 
   /** Sitenin adresi / Site URL */
-  url: 'https://zahit.dev',
+  url: 'https://example.com',
 };
 
 export const AUTHOR = {
   /** Adınız / Your name */
-  name: 'Oğuzhan Kuşca',
+  name: 'John Doe',
 
   /** Rolünüz / Your role */
   role: {
-    tr: 'YBS | Python | Linux',
-    en: 'MIS | Python | Linux',
+    tr: 'Yazılım Geliştirici',
+    en: 'Software Developer',
   },
 
   /** Kısa biyografiniz / Your short bio */
   bio: {
-    tr: 'Teknik detayları iş süreçleriyle buluşturan bir YBS öğrencisiyim. Python, Linux ve Backend üzerine geliştirdiğim projeleri ve sistem analizlerimi burada belgeliyorum.',
-    en: 'MIS student bridging the gap between technical details and business processes. Documenting my Python projects, Linux automations, and system analysis here.',
+    tr: 'Modern web teknolojileri ile ilgilenen, açık kaynak kodlu projelere katkıda bulunan bir geliştiriciyim. Burada örnek projelerimi ve yazılarımı paylaşıyorum.',
+    en: 'A developer interested in modern web technologies and contributing to open source projects. Documenting example projects and posts here.',
   },
 
-  /** Profil fotoğrafı yolu / Profile picture path (public klasöründen / from public folder) */
-  avatar: '/profile.jpeg',
+  /** Profil fotoğrafı yolu / Profile picture path (/src/assets klasöründen / from /src/assets folder) */
+  avatar: '/profile.jpg',
 };
 
 export const SOCIALS = [
   {
     label: 'Mail',
-    href: 'mailto:kuscadev@outlook.com',
+    href: 'mailto:johndoe@example.com',
     icon: 'mdi:email',
   },
   {
     label: 'GitHub',
-    href: 'https://github.com/kuscadev',
+    href: 'https://github.com/example',
     icon: 'mdi:github',
   },
   {
     label: 'X',
-    href: 'https://x.com/kuscadev',
+    href: 'https://x.com/example',
     icon: 'mdi:twitter',
   },
   {
     label: 'LinkedIn',
-    href: 'https://linkedin.com/in/oguzhankusca',
+    href: 'https://linkedin.com/in/example',
     icon: 'mdi:linkedin',
   },
   {
     label: 'Mastodon',
-    href: 'https://mastodon.social/@kuscadev',
+    href: 'https://mastodon.social/@example',
     icon: 'mdi:mastodon',
   },
   {
     label: 'Medium',
-    href: 'https://medium.com/@kuscadev',
+    href: 'https://medium.com/@example',
     icon: 'mdi:medium',
   },
   {

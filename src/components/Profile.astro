@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import { getLangFromUrl } from "../i18n/utils";
 import { Icon } from "astro-icon/components";
 import { AUTHOR, SOCIALS } from "../config";
-import avatarImage from "../assets/profile.jpeg";
+import avatarImage from "../assets/profile.jpg";
 
 const lang = getLangFromUrl(Astro.url);
 const role = AUTHOR.role[lang as keyof typeof AUTHOR.role] ?? AUTHOR.role.en;
@@ -12,7 +12,13 @@ const bio = AUTHOR.bio[lang as keyof typeof AUTHOR.bio] ?? AUTHOR.bio.en;
 
 <div class="profile-card">
     <div class="avatar">
-        <Image src={avatarImage} alt={`${AUTHOR.name} profile picture`} width={300} height={300} loading="eager" />
+        <Image
+            src={avatarImage}
+            alt={`${AUTHOR.name} profile picture`}
+            width={300}
+            height={300}
+            loading="eager"
+        />
     </div>
 
     <div class="info">
@@ -22,19 +28,22 @@ const bio = AUTHOR.bio[lang as keyof typeof AUTHOR.bio] ?? AUTHOR.bio.en;
     </div>
 
     <div class="socials">
-        {SOCIALS.map((social) => {
-            const href = social.label === 'RSS' ? `/${lang}/rss.xml` : social.href;
-            return (
-                <a
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.label}
-                >
-                    <Icon name={social.icon} />
-                </a>
-            );
-        })}
+        {
+            SOCIALS.map((social) => {
+                const href =
+                    social.label === "RSS" ? `/${lang}/rss.xml` : social.href;
+                return (
+                    <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={social.label}
+                    >
+                        <Icon name={social.icon} />
+                    </a>
+                );
+            })
+        }
     </div>
 </div>
 

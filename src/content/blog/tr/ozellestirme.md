@@ -25,7 +25,7 @@ Sol taraftaki profil kartınızın verilerini barındırır:
 - `name`: Tam adınız.
 - `role`: Türkçe (`tr`) ve İngilizce (`en`) dillerine göre rolleriniz.
 - `bio`: Profil fotoğrafınızın altında yer alacak kısa biyografi yazınız.
-- `avatar`: Profil fotoğrafınızın klasör yolu (Örn: `/public/` altına eklenen `/profile.jpeg`).
+- `avatar`: Profil fotoğrafınızın klasör yolu (Örn: `/src/assets` altına eklenen `/profile.jpg`).
 
 ### SOCIALS
 Sidebar veya mobil footer alanında ikon şeklinde gösterilecek sosyal medya hesaplarınızın listesidir:
@@ -33,7 +33,7 @@ Sidebar veya mobil footer alanında ikon şeklinde gösterilecek sosyal medya he
 export const SOCIALS = [
   {
     label: 'GitHub',
-    href: 'https://github.com/kuscadev',
+    href: 'https://github.com/johndoe',
     icon: 'mdi:github',
   },
   // Benzer şablonu kopyalayarak yeni sosyal ağlar ekleyebilirsiniz

@@ -158,21 +158,21 @@ export const SITE_CONFIG = {
 };
 
 export const AUTHOR = {
-  name: 'Oğuzhan Kuşca',
+  name: 'John Doe',
   role: {
-    tr: 'YBS | Python | Linux',
-    en: 'MIS | Python | Linux',
+    tr: 'Yazar | Geliştirici | Düşünür',
+    en: 'Writer | Developer | Thinker',
   },
   bio: {
-    tr: 'Teknik detayları iş süreçleriyle buluşturan bir YBS öğrencisiyim...',
-    en: 'MIS student bridging the gap between technical details...',
+    tr: 'Teknik konuları sade bir dille anlatan bağımsız bir yazarım. Projelerimi ve düşüncelerimi burada paylaşıyorum.',
+    en: 'An independent writer who explains technical topics in plain language. I share my projects and thoughts here.',
   },
-  avatar: '/profile.jpeg', // Place your avatar in the /public folder
+  avatar: '/profile.jpg', // Place your avatar in the /src/assets folder
 };
 
 export const SOCIALS = [
-  { label: 'Mail', href: 'mailto:kuscadev@outlook.com', icon: 'mdi:email' },
-  { label: 'GitHub', href: 'https://github.com/kuscadev', icon: 'mdi:github' },
+  { label: 'Mail', href: 'mailto:johndoe@example.com', icon: 'mdi:email' },
+  { label: 'GitHub', href: 'https://github.com/johndoe', icon: 'mdi:github' },
   // Add additional channels by mimicking this schema
 ];
 ```
