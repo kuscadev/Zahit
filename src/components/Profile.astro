@@ -90,16 +90,20 @@ const bio = AUTHOR.bio[lang as keyof typeof AUTHOR.bio] ?? AUTHOR.bio.en;
         line-height: 1.6;
         color: rgba(218, 234, 255, 0.8);
         margin-bottom: 1.5rem;
+        word-break: break-word;
+        overflow-wrap: break-word;
     }
 
     .socials {
         display: flex;
+        flex-wrap: wrap;
         gap: 1rem;
         justify-content: center;
     }
 
     .socials a {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: center;
         width: 40px;

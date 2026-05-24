@@ -152,6 +152,8 @@ const tocHeadings = headings.filter((h: MarkdownHeading) => h.depth === 2 || h.d
 	/* Content */
 	.content {
 		line-height: 1.8;
+		word-break: break-word;
+		overflow-wrap: break-word;
 	}
 
 	.content :global(h2) {
