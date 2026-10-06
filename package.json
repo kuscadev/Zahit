@@ -1,7 +1,7 @@
 {
   "name": "zahit",
   "type": "module",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "engines": {
     "node": ">=22.12.0"
   },
@@ -12,9 +12,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^5.0.6",
+    "@astrojs/mdx": "^8.0.2",
     "@astrojs/rss": "^4.0.18",
-    "astro": "^6.3.3",
+    "astro": "^7.3.5",
     "astro-icon": "^1.1.5"
   },
   "devDependencies": {

@@ -1,11 +1,11 @@
-# 🪐 Zahit — Minimalist & Raw Astro v6 Portfolio Blog Theme
+# 🪐 Zahit — Minimalist & Raw Astro v7 Portfolio Blog Theme
 
 <div align="center">
   <img src="public/zahit.png" alt="Zahit Theme Logo" width="100" style="margin-bottom: 15px;" />
   <p><em>"Simplicity is depth, not lack."</em></p>
 
-  [![Astro Version](https://img.shields.io/badge/Astro-v6.3%2B-ff5d01.svg?style=flat-square&logo=astro)](https://astro.build)
-  [![MDX Integration](https://img.shields.io/badge/MDX-v5.0%2B-fcb32c.svg?style=flat-square&logo=mdx)](https://mdxjs.com)
+  [![Astro Version](https://img.shields.io/badge/Astro-v7.0%2B-ff5d01.svg?style=flat-square&logo=astro)](https://astro.build)
+  [![MDX Integration](https://img.shields.io/badge/MDX-v8.0%2B-fcb32c.svg?style=flat-square&logo=mdx)](https://mdxjs.com)
   [![Language Support](https://img.shields.io/badge/i18n-Turkish%20%7C%20English-0855b1.svg?style=flat-square)](https://github.com/kuscadev/Zahit)
   [![Live Demo](https://img.shields.io/badge/Demo-astro--zahit.netlify.app-0855b1?style=flat-square&logo=netlify)](https://astro-zahit.netlify.app)
   [![Node Compatibility](https://img.shields.io/badge/Node-%3E%3D22.12.0-339933.svg?style=flat-square&logo=node.js)](https://nodejs.org)
@@ -16,7 +16,7 @@
 
 
 
-**Zahit** is a raw, flat minimalist **Astro v6** portfolio & blog theme built on the philosophy that simplicity is depth. Stripping away unnecessary widgets, heavy frameworks, and digital clutter, Zahit closes the gap between the writer and the reader, presenting a clean, content-first canvas optimized for developers, system administrators, and thinkers.
+**Zahit** is a raw, flat minimalist **Astro v7** portfolio & blog theme built on the philosophy that simplicity is depth. Stripping away unnecessary widgets, heavy frameworks, and digital clutter, Zahit closes the gap between the writer and the reader, presenting a clean, content-first canvas optimized for developers, system administrators, and thinkers.
 
 The theme features a cohesive, premium dark design system using a deep space blue background (`#00022b`), highlighted by vibrant ice-blue accents (`#4fa5d8`) and optimized ice-blue tinted text (`#daeaff`) for exceptional high-contrast reading comfort.
 
@@ -48,14 +48,16 @@ Despite its ultra-minimalist appearance, Zahit is packed with highly refined, mo
 * **Sticky Layout:** The profile panel floats as a sticky sidebar on large desktop monitors, keeping author details and social links readily available.
 * **Mobile-Optimized Layout:** Under `860px` screen widths, the author's avatar is automatically hidden via CSS media queries (`@media (max-width: 859px) { .avatar { display: none; } }`) to conserve vertical space and eliminate mobile distractions.
 
-### ⚡ 6. Locale-Aware 404 Page
-* **Path Detection:** The universal [`404.astro`](src/pages/404.astro) page extracts the current language context from the URL path. It then renders localized error messages and provides contextual Turkish or English buttons directing users back to `/home` or `/archive`.
+### 🔗 6. External Blog Posts Support
+* **Direct External Linking:** Seamlessly link to external articles (Medium, Substack, personal blogs, etc.) by specifying `external_url` and optional `external_source` in the post's frontmatter.
+* **Minimalist UI Indicators:** Post listings automatically display a subtle external icon (`↗`), open securely in a new tab (`target="_blank"` with `rel="noopener noreferrer"`), and show a clean source badge next to the date.
+* **Seamless Ecosystem Integration:** Direct visits to the local post route are automatically 301-redirected to the destination URL, and RSS feeds emit the external URL directly.
 
 ---
 
 ## 🛠️ Tech Stack
 
-* **Astro v6.3+** — Modern, component-based static site generator with zero client-side JS by default.
+* **Astro v7.0+** — Modern, component-based static site generator powered by the Rust compiler, Vite 8, and zero client-side JS by default.
 * **MDX Integration** — Markdown extension that allows importing interactive components and structures inside posts.
 * **Astro-Icon** — Highly optimized SVG icon wrapper supporting Iconify icon packs.
 * **Pure CSS Design System** — Built purely on top of local CSS variables (`global.css`) without bloated utility frameworks.
@@ -82,17 +84,15 @@ Zahit/
 │   │   ├── ui.ts               # Localized translation dictionary keys
 │   │   └── utils.ts            # Translation route parsers and slug resolvers
 │   ├── pages/                  # Page routes (File-based Routing)
-│   │   ├── [lang]/             # Localized routes (Home, Archive)
+│   │   ├── [...lang]/          # Localized routes (Home, Archive, Tags, RSS)
 │   │   │   ├── blog/
-│   │   │   │   └── [...slug].astro  # Dynamic blog posts resolver
-│   │   │   ├── archive.astro
-│   │   │   └── index.astro
-│   │   ├── en/
-│   │   │   └── about.astro     # English "About Me" page
-│   │   ├── tr/
-│   │   │   └── about.astro     # Turkish "Hakkımda" page
-│   │   ├── 404.astro           # Universal i18n-aware 404 page
-│   │   └── index.astro         # Root entry route (Redirects to /tr/)
+│   │   │   │   └── [...slug].astro  # Dynamic blog posts resolver & 301 redirect
+│   │   │   ├── tags/           # Tag indices and filtered posts
+│   │   │   ├── about.astro     # Localized About page
+│   │   │   ├── archive.astro   # Year-grouped archive
+│   │   │   ├── index.astro     # Localized Home page
+│   │   │   └── rss.xml.ts      # Localized RSS feed
+│   │   └── 404.astro           # 404 fallback page
 │   ├── styles/                 # Styling architecture
 │   │   └── global.css          # Color scheme tokens, resets, & typography
 │   ├── content/                # Content directories
@@ -220,7 +220,28 @@ Write your English content here...
 
 ---
 
-### 🎨 3. Customize Colors & Themes: `src/styles/global.css`
+### 🔗 3. Writing External Blog Posts
+
+To feature an article published on an external platform (e.g. Medium, Substack, dev.to) alongside your local posts, simply include `external_url` and optional `external_source` in the post's frontmatter:
+
+```markdown
+---
+title: 'Modern Web Development Approaches'
+description: 'An in-depth article published on an external platform.'
+pubDate: '2026-06-01'
+tags: ['web', 'architecture']
+external_url: 'https://medium.com/@username/modern-web-development'
+external_source: 'Medium' # Optional: renders a badge next to the date
+---
+```
+
+* **Listing Cards:** Automatically navigate directly to the target URL in a new tab (`target="_blank" rel="noopener noreferrer"`), accompanied by a minimal `↗` indicator and source badge.
+* **Fallback 301 Redirect:** If a user accesses the local post slug directly, they are seamlessly redirected with an HTTP 301 status.
+* **RSS Feed:** The RSS feed item's `link` automatically references the external URL.
+
+---
+
+### 🎨 4. Customize Colors & Themes: `src/styles/global.css`
 
 Zahit is entirely customized using CSS variables. Change the theme colors, typography, or grid width in [`src/styles/global.css`](src/styles/global.css):
 
@@ -248,7 +269,7 @@ Zahit is entirely customized using CSS variables. Change the theme colors, typog
 
 ---
 
-### 🗣️ 4. Edit Menu Labels: `src/i18n/ui.ts`
+### 🗣️ 5. Edit Menu Labels: `src/i18n/ui.ts`
 
 Customize translation dictionary labels or add extra languages in [`src/i18n/ui.ts`](src/i18n/ui.ts):
 

@@ -14,6 +14,7 @@ Zahit is more than just a theme; it is a perspective. It represents a way of hig
 - Responsive layout for all devices
 - Easy content management with Astro components
 - Markdown and MDX support
+- External blog posts support (Medium, Substack, etc.)
 - Code syntax highlighting for developers
 - Tags and categorization
 - SEO‑friendly structure

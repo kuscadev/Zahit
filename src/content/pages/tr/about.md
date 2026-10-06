@@ -14,6 +14,7 @@ Zahit, yalnızca bir tema değil; bir bakış açısıdır. Gereksiz olanı ayı
 - Tüm cihazlar için duyarlı tasarım
 - Astro bileşenleriyle kolay içerik yönetimi
 - Markdown ve MDX desteği
+- Harici blog yazıları desteği (Medium, Substack vb.)
 - Geliştiriciler için sözdizimi vurgulama
 - Etiketler ve kategoriler
 - Arama motoru dostu yapı

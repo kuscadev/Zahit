@@ -6,7 +6,7 @@ tags: ['zahit-guide', 'installation', 'astro']
 translationKey: 'zahit-installation'
 ---
 
-Welcome to the **Zahit** installation guide! Zahit is a raw, flat minimalist Astro v6 theme built on the philosophy that simplicity is depth. In this guide, we will walk you through the process of cloning the repository, installing the required dependencies, and starting the local development environment.
+Welcome to the **Zahit** installation guide! Zahit is a raw, flat minimalist Astro v7 theme built on the philosophy that simplicity is depth. In this guide, we will walk you through the process of cloning the repository, installing the required dependencies, and starting the local development environment.
 
 ## Prerequisites
 

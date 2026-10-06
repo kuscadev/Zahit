@@ -60,16 +60,30 @@ const pageDescription = currentLang === 'tr'
 			<ul>
 				{posts.map((post) => {
 					const slugWithoutLang = post.id.replace(`${currentLang}/`, '');
+					const isExternal = Boolean(post.data.external_url);
+					const href = post.data.external_url || getRelativeLocaleUrl(currentLang, `blog/${slugWithoutLang}`);
 					return (
 						<li>
-							<a href={getRelativeLocaleUrl(currentLang, `blog/${slugWithoutLang}`)}>
-								<span class="title">{post.data.title}</span>
-								<span class="date">
-									{post.data.pubDate.toLocaleDateString(currentLang, {
-										year: 'numeric',
-										month: 'long',
-										day: 'numeric',
-									})}
+							<a
+								href={href}
+								target={isExternal ? '_blank' : undefined}
+								rel={isExternal ? 'noopener noreferrer' : undefined}
+							>
+								<span class="title">
+									{post.data.title}
+									{isExternal && <span class="external-icon" aria-hidden="true">↗</span>}
+								</span>
+								<span class="meta-info">
+									{post.data.external_source && (
+										<span class="external-badge">{post.data.external_source}</span>
+									)}
+									<span class="date">
+										{post.data.pubDate.toLocaleDateString(currentLang, {
+											year: 'numeric',
+											month: 'long',
+											day: 'numeric',
+										})}
+									</span>
 								</span>
 							</a>
 						</li>
@@ -161,6 +175,38 @@ const pageDescription = currentLang === 'tr'
 		margin-top: 0.15rem;
 	}
 
+	.meta-info {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin-top: 0.15rem;
+	}
+
+	.external-icon {
+		display: inline-block;
+		margin-left: 0.25rem;
+		font-size: 0.85em;
+		color: var(--light);
+		transition: transform var(--transition-speed) ease;
+	}
+
+	li a:hover .external-icon {
+		transform: translate(2px, -2px);
+		color: var(--text-color);
+	}
+
+	.external-badge {
+		font-size: 0.72rem;
+		font-weight: 500;
+		color: var(--light);
+		background: rgba(79, 165, 216, 0.1);
+		border: 1px solid rgba(79, 165, 216, 0.2);
+		padding: 0.1rem 0.45rem;
+		border-radius: 4px;
+		letter-spacing: 0.02em;
+		white-space: nowrap;
+	}
+
 	@media (min-width: 640px) {
 		li a {
 			flex-direction: row;
@@ -168,10 +214,16 @@ const pageDescription = currentLang === 'tr'
 			align-items: center;
 		}
 
-		.date {
+		.meta-info {
 			margin-top: 0;
 			flex-shrink: 0;
 			margin-left: 1rem;
+		}
+
+		.date {
+			margin-top: 0;
+			flex-shrink: 0;
+			margin-left: 0;
 		}
 	}
 

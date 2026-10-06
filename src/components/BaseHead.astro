@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl } from '../i18n/utils';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 export interface Props {
 	title: string;
@@ -19,7 +20,7 @@ const lang = getLangFromUrl(Astro.url);
 <meta name="generator" content={Astro.generator} />
 
 <!-- RSS Feeds -->
-<link rel="alternate" type="application/rss+xml" title={`${title} (${lang.toUpperCase()} RSS)`} href={`/${lang}/rss.xml`} />
+<link rel="alternate" type="application/rss+xml" title={`${title} (${lang.toUpperCase()} RSS)`} href={getRelativeLocaleUrl(lang, 'rss.xml')} />
 <link rel="alternate" type="application/rss+xml" title={`${title} (Global RSS)`} href="/rss.xml" />
 
 <!-- Primary Meta Tags -->

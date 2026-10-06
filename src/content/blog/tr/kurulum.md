@@ -6,7 +6,7 @@ tags: ['zahit-guide', 'kurulum', 'astro']
 translationKey: 'zahit-installation'
 ---
 
-**Zahit** kurulum rehberine hoş geldiniz! Zahit, sadeliğin eksiklik değil derinlik olduğu felsefesiyle üretilmiş, ham ve düz minimalist bir Astro v6 temasıdır. Bu rehberde, depoyu klonlamaktan yerel geliştirme sunucusunu ayağa kaldırmaya kadar tüm kurulum adımlarını öğreneceğiz.
+**Zahit** kurulum rehberine hoş geldiniz! Zahit, sadeliğin eksiklik değil derinlik olduğu felsefesiyle üretilmiş, ham ve düz minimalist bir Astro v7 temasıdır. Bu rehberde, depoyu klonlamaktan yerel geliştirme sunucusunu ayağa kaldırmaya kadar tüm kurulum adımlarını öğreneceğiz.
 
 ## Gereksinimler
 
