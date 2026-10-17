@@ -57,4 +57,46 @@ function zahit() {
 | `*italik*` | İtalik metin |
 | `[metin](url)` | Bağlantı |
 
+## Grafikler (MDX)
+
+`.mdx` uzantılı yazılarınızda herhangi bir ek `import` işlemine gerek kalmadan doğrudan `<Chart />` bileşenini kullanabilirsiniz. Grafik kütüphanesi yalnızca bileşenin bulunduğu sayfalarda ve okuyucu grafiğe yaklaştığında (lazy-load) yüklenir:
+
+```jsx
+<Chart
+  type="bar"
+  data={{
+    labels: ['Chrome', 'Safari', 'Edge', 'Firefox'],
+    datasets: [{
+      label: 'Tarayıcı Kullanım Oranı (%)',
+      data: [68.5, 16.3, 5.0, 2.4],
+      backgroundColor: ['#4fa5d8', 'rgba(79, 165, 216, 0.35)', 'rgba(79, 165, 216, 0.35)', '#f97316']
+    }]
+  }}
+  options={{
+    scales: {
+      y: { beginAtZero: true, ticks: { suffix: '%' } },
+      x: { grid: { display: false } }
+    }
+  }}
+/>
+```
+
+<Chart
+  type="bar"
+  data={{
+    labels: ['Chrome', 'Safari', 'Edge', 'Firefox'],
+    datasets: [{
+      label: 'Tarayıcı Kullanım Oranı (%)',
+      data: [68.5, 16.3, 5.0, 2.4],
+      backgroundColor: ['#4fa5d8', 'rgba(79, 165, 216, 0.35)', 'rgba(79, 165, 216, 0.35)', '#f97316']
+    }]
+  }}
+  options={{
+    scales: {
+      y: { beginAtZero: true, ticks: { suffix: '%' } },
+      x: { grid: { display: false } }
+    }
+  }}
+/>
+
 Markdown öğrenmek birkaç dakika alır; ustalaşmak ise sizi özgür kılar.

@@ -57,4 +57,46 @@ function zahit() {
 | `*italic*` | Italic text |
 | `[text](url)` | Link |
 
+## Charts (MDX)
+
+In `.mdx` posts, you can use the `<Chart />` component directly without any manual `import`. The chart library is lazy-loaded only on pages that include a chart and only when the reader scrolls near it:
+
+```jsx
+<Chart
+  type="bar"
+  data={{
+    labels: ['Chrome', 'Safari', 'Edge', 'Firefox'],
+    datasets: [{
+      label: 'Browser Market Share (%)',
+      data: [68.5, 16.3, 5.0, 2.4],
+      backgroundColor: ['#4fa5d8', 'rgba(79, 165, 216, 0.35)', 'rgba(79, 165, 216, 0.35)', '#f97316']
+    }]
+  }}
+  options={{
+    scales: {
+      y: { beginAtZero: true, ticks: { suffix: '%' } },
+      x: { grid: { display: false } }
+    }
+  }}
+/>
+```
+
+<Chart
+  type="bar"
+  data={{
+    labels: ['Chrome', 'Safari', 'Edge', 'Firefox'],
+    datasets: [{
+      label: 'Browser Market Share (%)',
+      data: [68.5, 16.3, 5.0, 2.4],
+      backgroundColor: ['#4fa5d8', 'rgba(79, 165, 216, 0.35)', 'rgba(79, 165, 216, 0.35)', '#f97316']
+    }]
+  }}
+  options={{
+    scales: {
+      y: { beginAtZero: true, ticks: { suffix: '%' } },
+      x: { grid: { display: false } }
+    }
+  }}
+/>
+
 Markdown takes minutes to learn and a lifetime to appreciate.

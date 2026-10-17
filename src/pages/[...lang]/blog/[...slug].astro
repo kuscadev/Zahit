@@ -1,6 +1,7 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import BlogPost from '../../../layouts/BlogPost.astro';
+import Chart from '../../../components/Chart.astro';
 import { defaultLang } from '../../../i18n/ui';
 
 export async function getStaticPaths() {
@@ -26,5 +27,5 @@ const { Content, headings } = await render(post);
 ---
 
 <BlogPost {...post.data} headings={headings}>
-	<Content />
+	<Content components={{ Chart }} />
 </BlogPost>
